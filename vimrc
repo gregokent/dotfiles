@@ -152,7 +152,7 @@ augroup END
 " Commenting Commands {{{
 augroup filetype_comments
     autocmd FileType c,cpp,java,javascript let b:comment_leader = '// '
-    autocmd FileType sh,ruby,python        let b:comment_leader = '# ' 
+    autocmd FileType sh,ruby,python,zsh    let b:comment_leader = '# ' 
     autocmd FileType vim                   let b:comment_leader = '" '
 augroup END
 noremap <silent> <leader>cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
