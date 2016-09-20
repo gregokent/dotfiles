@@ -12,6 +12,7 @@ set nocompatible              " be iMproved, required
    Plugin 'gmarik/Vundle.vim'
    Plugin 'christoomey/vim-tmux-navigator'
    Plugin 'benmills/vimux'
+   Plugin 'rust-lang/rust.vim'
 
    " All of your Plugins must be added before the following line
    call vundle#end()            " required
