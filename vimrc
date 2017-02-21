@@ -166,4 +166,44 @@ noremap <silent> <leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader
 autocmd FileType make setlocal noexpandtab
 " }}}
 
+function! HeatseekerCommand(choice_command, hs_args, first_command, rest_command)
+    try
+        let selections = system(a:choice_command . " | hs " . a:hs_args)
+    catch /Vim:Interrupt/
+        redraw!
+        return
+    endtry
+    redraw!
+    let first = 1
+    for selection in split(selections, "\n")
+        if first
+            exec a:first_command . " " . selection
+            let first = 0
+        else
+            exec a:rest_command . " " . selection
+        endif
+    endfor
+endfunction
 
+if has('win32')
+    nnoremap <leader>f :call HeatseekerCommand("dir /a-d /s /b", "", ':e', ':tabe')<CR>
+else
+    nnoremap <leader>f :call HeatseekerCommand("find . ! -path '*/.git/*' -type f -follow", "", ':e', ':tabe')<cr>
+endif
+
+function! HeatseekerBuffer()
+    let bufnrs = filter(range(1, bufnr("$")), 'buflisted(v:val)')
+    let buffers = map(bufnrs, 'bufname(v:val)')
+    let named_buffers = filter(buffers, '!empty(v:val)')
+    if has('win32')
+        let filename = tempname()
+        call writefile(named_buffers, filename)
+        call HeatseekerCommand("type " . filename, "", ":b", ":b")
+        silent let _ = system("del " . filename)
+    else
+        call HeatseekerCommand('echo "' . join(named_buffers, "\n") . '"', "", ":b", ":b")
+    endif
+endfunction
+
+" Fuzzy select a buffer. Open the selected buffer with :b.
+nnoremap <leader>b :call HeatseekerBuffer()<cr>
