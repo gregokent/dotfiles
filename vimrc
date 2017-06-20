@@ -13,6 +13,10 @@ set nocompatible              " be iMproved, required
    Plugin 'christoomey/vim-tmux-navigator'
    Plugin 'benmills/vimux'
    Plugin 'rust-lang/rust.vim'
+   Plugin 'tpope/vim-unimpaired'
+   Plugin 'tpope/vim-repeat'
+   Plugin 'tpope/vim-fugitive'
+   Plugin 'tpope/vim-speeddating'
 
    " All of your Plugins must be added before the following line
    call vundle#end()            " required
@@ -31,6 +35,7 @@ set number
 " configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+set autochdir
 
 " Ignore case when searching
 set ignorecase
@@ -51,6 +56,10 @@ set mat=2
 
 "no error sounds
 set noerrorbells
+
+" Tab complete like bash/zsh
+set wildmode=longest,list,full
+set wildmenu
 
 """"""""""""""""""""""""""""""""""""""""""""""
 "==Colors & Syntax==
@@ -114,7 +123,7 @@ autocmd BufReadPost *
 set laststatus=2
 
 "format status line
-set statusline=\ %{HasPaste()\ }%t%m%r%h\ %y%w\ \ cwd:\ %r%{getcwd()}%h\ \ \ Line:\ %l/%L\ %P
+set statusline=\ %{HasPaste()\ }%t%m%r%h\ %y%w\ \ cwd:\ %r%{getcwd()}%h\ \ %{fugitive#statusline()}\ \ Line:\ %l/%L\ %P
 
 "=> helper functions"
 function! HasPaste()
