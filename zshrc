@@ -40,3 +40,5 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 if [ -f ~/.zsh/aliases ]; then
     source ~/.zsh/aliases
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

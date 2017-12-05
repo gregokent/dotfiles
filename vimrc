@@ -17,6 +17,9 @@ set nocompatible              " be iMproved, required
    Plugin 'tpope/vim-repeat'
    Plugin 'tpope/vim-fugitive'
    Plugin 'tpope/vim-speeddating'
+   Plugin 'tpope/vim-commentary'
+   Plugin 'chrisbra/Recover.vim'
+   Plugin 'kopischke/vim-fetch'
 
    " All of your Plugins must be added before the following line
    call vundle#end()            " required
@@ -153,6 +156,9 @@ augroup END
     nnoremap <leader>"w viw<esc>a"<esc>hbi"<esc>lel
     nnoremap <leader>"W viW<esc>a"<esc>hBi"<esc>lEl
     nnoremap <leader>x  :VimuxPromptCommand<CR>
+
+    " Paste using paste mode
+    nnoremap <silent> <leader>p :set paste<CR>""p:set nopaste<CR>
 " }}}
 
 " Visual Mode Mappings {{{
@@ -216,3 +222,7 @@ endfunction
 
 " Fuzzy select a buffer. Open the selected buffer with :b.
 nnoremap <leader>b :call HeatseekerBuffer()<cr>
+
+
+" Disable Tmux navigator while zoomed into VIM
+"let g:tmux_navigator_disable_when_zoomed = 1
