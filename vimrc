@@ -225,4 +225,4 @@ nnoremap <leader>b :call HeatseekerBuffer()<cr>
 
 
 " Disable Tmux navigator while zoomed into VIM
-"let g:tmux_navigator_disable_when_zoomed = 1
+" let g:tmux_navigator_disable_when_zoomed = 1

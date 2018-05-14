@@ -1,3 +1,4 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias -g asdf='ls -1 -dlt *(om[1,10])'
 #PATH="$PATH:$HOME/.cargo/bin"
