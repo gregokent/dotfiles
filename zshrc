@@ -6,7 +6,7 @@ promptinit
 prompt pure
 #prompt adam1
 
-setopt histignorealldups sharehistory
+setopt histignorealldups sharehistory histignorespace
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e

@@ -18,6 +18,7 @@ set nocompatible              " be iMproved, required
    Plugin 'tpope/vim-fugitive'
    Plugin 'tpope/vim-speeddating'
    Plugin 'tpope/vim-commentary'
+   Plugin 'tpope/vim-abolish'
    Plugin 'chrisbra/Recover.vim'
    Plugin 'kopischke/vim-fetch'
 

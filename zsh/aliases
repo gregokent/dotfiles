@@ -1,4 +1,5 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias -g asdf='ls -1 -dlt *(om[1,10])'
+alias qn='subl --new-window ~/notes/$(date --rfc-3339="date").md'
 #PATH="$PATH:$HOME/.cargo/bin"
